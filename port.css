@@ -1,0 +1,285 @@
+* {
+	margin: 0px;
+	font-family: arial,helvetica,sans-serif;
+}
+#down {
+	width: 2%;
+	margin: auto;
+}
+#eerste {
+	background-image: url(images/moederbord.png);
+	background-size: 100% 100%;
+}
+#tweede {
+	background-image: url(images/computer.png);
+	background-size: 100% 100%;
+}
+.overzichtmenu {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overzichtmenu a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overzichtmenu a:hover, .overzichtmenu a:focus {
+    color: #f1f1f1;
+}
+
+.overzichtmenu .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overzichtmenu {overflow-y: auto;}
+  .overzichtmenu a {font-size: 20px}
+  .overzichtmenu .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+#button {
+	cursor: pointer;
+}
+#overzicht{
+	position: fixed;
+	background-color: black;
+	opacity: 0.9;
+	text-align: center;
+	color: white;
+	font-size: 1.5vw;
+	height: 8%;
+	width: 100%;
+}
+#openhead{
+	padding-top: 7%;
+	margin: auto;
+	text-align: center;
+	color: white
+}
+#welkom {
+	padding-top: 7%;
+	margin: auto;
+	text-align: center;
+	color: white;
+}
+#intro {
+	padding-top: 7%;
+	margin: auto;
+	text-align: center;
+	color: white;
+}
+#closehead {
+	padding-top: 7%;
+	margin: auto;
+	text-align: center;
+	color: white;
+}
+#openbody{
+	margin: auto;
+	text-align: center;
+	padding-top: 5%;
+}
+#overmij{
+	padding-top: 4%;
+}
+.lijn{
+	display: block;
+	width: 30%;
+	margin: auto;
+}
+#portret{
+ 	float: left;
+ 	width: 27%;
+ 	margin-top: 10%;
+ 	margin-left: 10%;
+}
+#foto{
+	margin-left: 10%;
+	width: 100%;
+}
+#foto {
+	margin: auto;
+	display: block;
+}
+#quote {
+	margin: auto;
+	padding-top: 12%;
+	padding-left: 35%;
+	text-align: center;
+	font-size: 1.5vw;
+	width: 50%;
+	color: blue;
+}
+#mijtekst{
+	margin:auto;
+	text-align: center;
+	width: 50%;
+	padding-top: 6%;
+	padding-left: 35%;
+	font-size: 1.5vw;
+}
+#skills{
+	margin-top: 20%;
+}
+#wordcloud {
+	width: 100%;
+	margin-top: 6%;
+}
+#projecten{
+	margin: auto;
+	text-align: center;
+	margin-top: 20%;
+	padding-top: 2%;
+	font-size: 40px;
+	color: white;
+}
+#project1 {
+	display: inline-block;
+	position: relative;
+	margin-left: 4.75%;
+	margin-top: 13%;
+	margin-bottom: 20%;
+	cursor: pointer;
+}
+#project2 {
+	display: inline-block;
+	margin-left: 4.75%;
+	margin-right: 4.75%;
+	position: relative;
+	margin-top: 13%;
+	margin-bottom: 20%;
+	cursor: pointer;
+}
+.proj {
+	width: 27%;
+}
+.proje {
+	height: 250px;
+	width: 400px;
+}
+#project3 {
+	display: inline-block;
+	position: relative;
+	margin-top: 13%;
+	margin-bottom: 20%;
+	cursor: pointer;
+}
+.projtitel {
+	margin: auto;
+	text-align: center;
+	color: white;
+	font-size: 2vw;
+	margin-top: 15%;
+}
+.projtext {
+	padding-top: 2%;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin: auto;
+	text-align: center;
+	color: white;
+	font-size: 1vw;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  transition: .5s ease;
+  background-color: black;
+}
+#project1:hover .overlay {
+  opacity: 1;
+}
+#project2:hover .overlay {
+  opacity: 1;
+}
+#project3:hover .overlay {
+  opacity: 1;
+}
+#contact{
+	width: 100%;
+	margin-top: 6%;
+}
+.sectietitel {
+	margin: auto;
+	text-align: center;
+	font-size: 2vw;
+}
+#telefoon {
+	padding-top: 5%;
+	width: 11%
+}
+#mail {
+	float: left;
+	padding-left: 23%;
+	padding-top: 6%;
+	padding-right: 27%;
+	width: 15%;
+}
+#email {
+	float: left;
+	padding-left: 23%;
+	padding-right: 27.5%;
+}
+#facebook {
+	float: left;
+	width: 10%;
+	padding-left: 25.5%;
+	padding-right: 30%;
+	padding-top: 10%;
+}
+#linkedin {
+	width: 10%;
+	padding-top: 10%;
+}
+#facebooktext {
+	float: left;
+	padding-left: 27%; 
+	padding-right: 34%;
+}
+.text {
+	font-size: 1.5vw;
+}
+#closebody {
+	margin: auto;
+	padding-top: 7%;
+	text-align: center;
+}
+h2{
+	font-size: 5vw;
+}
+h1{
+	font-size: 10vw;
+}

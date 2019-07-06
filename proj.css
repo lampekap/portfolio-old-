@@ -1,0 +1,36 @@
+* {
+	margin: 0px;
+	font-family: arial,helvetica,sans-serif;
+}
+.sectietitel {
+	margin: auto;
+	text-align: center;
+	font-size: 2vw;
+}
+.lijn{
+	display: block;
+	width: 30%;
+	margin: auto;
+	margin-bottom: 30px;
+}
+.sectie{
+	width: 60%;
+	margin: auto;
+}
+.images{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.text{
+	margin-bottom: 30px;
+}
+video{
+	width: 100%;
+	margin: auto;
+	margin-bottom: 30px;
+}
+#mute{
+display: block;
+width: 60%;
+margin: auto;
+}

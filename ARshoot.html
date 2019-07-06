@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Augmented reality shooter</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="proj.css">
+</head>
+<body>
+		<div class="sectietitel">
+		<h3>Augmented reality</h3>
+	</div>
+		<img src="images/lijn.png" class="lijn">
+	<div class="sectie">
+		<p class="text"> Tijdens het vak Human Computer Interaction heb ik twee weken de tijd gehad om iets te maken met het thema AR en VR. Ik had ervoor gekozen om een schietspel te maken met augmented reality en een nerf geweer. Op het nerf geweer zit een telefoon bevestigd, op deze telefoon zijn de doelwitten te zien zodra er naar een marker wordt gekeken. Als het doelwit geraakt is wordt dit geregristreerd door een arduino met een piezo sensor die dit signaal via bluetooth naar de app verstuurd. Op de app verdwijnt dan het doelwit voor 10 seconde en de speler krijgt een punt.</p>
+		<video controls>
+			  <source src="video's/shooter_vid.mp4" type="video/mp4">
+		</video>
+		<p class="text">
+			Ik heb voor het maken van de app in Unity ook geleerd om te programmeren in C#. De onderstaande code zorgt ervoor dat de app met de arduino verbindt en vervolgens voor elk geraakte doelwit een punt optelt en het bijbehorende doelwit laat verdwijnen.</br></br>
+
+using System.Collections; </br>
+using System.Collections.Generic;</br>
+using UnityEngine;</br>
+using UnityEngine.UI;</br>
+using ArduinoBluetoothAPI;</br>
+using System;</br>
+using System.Timers;</br>
+using System.Threading.Tasks;</br>
+using System.Timers;</br>
+</br>
+public class score : MonoBehaviour</br>
+{</br>
+</br>
+    // Use this for initialization</br>
+    public GameObject target1;</br>
+    public GameObject target2;</br>
+    public GameObject target3;</br>
+    public GameObject target4;</br>
+    public GameObject target5;</br>
+    public float Score = 0;</br>
+    public float previousscore = 0;</br>
+    public Text sscore;</br>
+    string message;</br>
+    private BluetoothHelper helper;</br>
+</br>
+
+    void Start()</br>
+    {</br>
+       </br>
+        string deviceName = "HC-05";</br>
+        try</br>
+        {</br>
+            helper = BluetoothHelper.GetInstance(deviceName);</br>
+            helper.OnConnected += OnConnected;</br>
+            helper.OnConnectionFailed += OnConnFailed;</br>
+</br>
+            helper.setTerminatorBasedStream("\n");</br>
+</br>
+            if (helper.isDevicePaired())</br>
+                helper.Connect();</br>
+            Debug.Log("not paired");</br>
+        }</br>
+        catch { }</br>
+    }</br>
+    void Update()</br>
+    {</br>
+        helper.OnDataReceived += () =></br>
+        {</br>
+            //this is called when you receive data FROM your arduino</br>
+            string receivedData;</br>
+            receivedData = helper.Read();</br>
+            switch (receivedData)</br>
+            {</br>
+                case "knopje":</br>
+                scoreUp();</br>
+                    StartCoroutine(moveUp1());</br>
+                    break;</br>
+                case "hit1":</br>
+                    StartCoroutine(moveUp4());</br>
+                    scoreUp();</br>
+                    break;</br>
+                case "hit2":</br>
+                    StartCoroutine(moveUp2());</br>
+                    scoreUp();</br>
+                    break;</br>
+                case "hit3":</br>
+                    StartCoroutine(moveUp6());</br>
+                    scoreUp();</br>
+                    break;</br>
+                case "hit4":</br>
+                    StartCoroutine(moveUp3());</br>
+                    scoreUp();</br>
+                    break;</br>
+                case "hit5":</br>
+                    StartCoroutine(moveUp5());</br>
+                    scoreUp();</br>
+                    break;</br>
+            }</br>
+        };</br>
+</br>
+    }</br>
+    void OnConnected() {</br>
+        Debug.Log("connected");</br>
+        helper.StartListening();</br>
+    }</br>
+    void OnConnFailed()</br>
+    {</br>
+        Debug.Log("failed");</br>
+    }</br>
+    void scoreUp()</br>
+    {</br>
+        Score = previousscore + 1;</br>
+        previousscore = Score;</br>
+        sscore.text = Score.ToString();</br>
+    }</br>
+    IEnumerator moveUp1()</br>
+    {</br>
+        Vector3 origScale = target1.transform.localScale;</br>
+</br>
+        target1.transform.localScale = new Vector3(1.25f, 2.9f, 0);</br>
+        Debug.Log("test1");</br>
+        yield return new WaitForSeconds(5);</br>
+        target1.transform.localScale = origScale;</br>
+        Debug.Log("test2");</br>
+    }</br>
+    IEnumerator moveUp2()</br>
+    {</br>
+        Vector3 origScale = target2.transform.localScale;</br>
+</br>
+        target2.transform.localScale = new Vector3(1.25f, 2.9f, 0);</br>
+        Debug.Log("test1");</br>
+        yield return new WaitForSeconds(5);</br>
+        target2.transform.localScale = origScale;</br>
+        Debug.Log("test2");</br>
+    }</br>
+</br>
+    IEnumerator moveUp3()</br>
+    {</br>
+        Vector3 origScale = target3.transform.localScale;</br>
+</br>
+        target3.transform.localScale = new Vector3(1.25f, 2.9f, 0);</br>
+        Debug.Log("test1");</br>
+        yield return new WaitForSeconds(5);</br>
+        target3.transform.localScale = origScale;</br>
+        Debug.Log("test2");</br>
+    }</br>
+    IEnumerator moveUp4()</br>
+    {</br>
+        Vector3 origScale = target4.transform.localScale;</br>
+</br>
+        target4.transform.localScale = new Vector3(1.25f, 2.9f, 0);</br>
+        Debug.Log("test1");</br>
+        yield return new WaitForSeconds(5);</br>
+        target4.transform.localScale = origScale;</br>
+        Debug.Log("test2");</br>
+    }</br>
+    IEnumerator moveUp5()</br>
+    {</br>
+        Vector3 origScale = target5.transform.localScale;</br>
+</br>
+        target5.transform.localScale = new Vector3(1.25f, 2.9f, 0);</br>
+        Debug.Log("test1");</br>
+        yield return new WaitForSeconds(5);</br>
+        target5.transform.localScale = origScale;</br>
+        Debug.Log("test2");</br>
+    }</br>
+    IEnumerator moveUp6()</br>
+    {</br>
+        Vector3 origScale = target1.transform.localScale;</br>
+</br>
+        target1.transform.localScale = new Vector3(1.25f, 2.9f, 0);</br>
+        Debug.Log("test1");</br>
+        yield return new WaitForSeconds(5);</br>
+        target1.transform.localScale = origScale;</br>
+        Debug.Log("test2");</br>
+    }</br>
+</br>
+    void OnDestroy()</br>
+    {</br>
+        if (helper != null)</br>
+            helper.Disconnect();</br>
+    }</br>
+}</br>
+		</p>
+	</div>
+</body>
+</html>
